@@ -7,3 +7,11 @@ export async function getUsers(req, res) {
         console.log(error)
     }
 }
+
+export async function createUser(req, res) {
+    try {
+        res.send('USUARIO CREADO')
+    } catch (error) {
+        console.log(error)
+    }
+}
