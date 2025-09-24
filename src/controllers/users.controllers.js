@@ -15,3 +15,12 @@ export async function createUser(req, res) {
         console.log(error)
     }
 }
+
+export async function updateUser(req, res) {
+    try {
+        res.send('USUARIO ACTUALIZADO')
+    } catch (error) {
+        console.log(error)
+        
+    }
+}
