@@ -24,3 +24,12 @@ export async function updateUser(req, res) {
         
     }
 }
+
+export async function deleteUser(req,res) {
+    try {
+        res.send('USUARIO ELIMINADO');
+    } catch (error) {
+        console.log(error);
+        
+    }
+}

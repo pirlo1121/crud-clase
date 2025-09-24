@@ -1,5 +1,5 @@
 import express from 'express'
-import { createUser, getUsers, updateUser } from '../controllers/users.controllers.js';
+import { createUser, deleteUser, getUsers, updateUser } from '../controllers/users.controllers.js';
 const router = express.Router();
 
 // cada ruta recibe 'nombre/ruta' y callback (funcion);
@@ -7,6 +7,7 @@ const router = express.Router();
 router.get("/users",  getUsers);
 router.post("/createUser", createUser);
 router.put("/updateUser", updateUser);
+router.delete("/deleteUser", deleteUser);
 
 
 export default router
