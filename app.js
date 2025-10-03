@@ -7,6 +7,9 @@ import router from './src/routes/users.routes.js'
 
 configDotenv()
 const app = express();
+
+app.use( express.json() );
+
 connectDB();
 
 
