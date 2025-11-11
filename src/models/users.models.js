@@ -1,3 +1,4 @@
+
 import mongoose from "mongoose";
 
 // crear Schema y modelo 
@@ -8,8 +9,7 @@ const userSchema = new mongoose.Schema(
             required: [true, "El nombre es obligatorio"]
         },
         age: {
-            type: Number,
-            required: [true, "La edad es obligatoria"]
+            type: Number
         },
         email: {
             type: String,
@@ -24,6 +24,16 @@ const userSchema = new mongoose.Schema(
             required: [true, "Password requerida"],
             minlength: [8, "La contraseña requiere minimo 8 carcateres"]
         },
+        role: {
+            type: String,
+            enum: ['client', 'owner', 'admin'],
+            default: 'client'
+        },
+        verified: {
+            type: Boolean,
+            default: false
+        },
+        
     });
 
 

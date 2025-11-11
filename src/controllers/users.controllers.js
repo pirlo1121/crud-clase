@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import { UserModel } from "../models/users.models.js"
-
+import { UserModel } from "../models/users.models.js";
+import bcrypt from 'bcrypt';
 
 export async function getUsers(req, res) {
     try {
@@ -37,26 +37,6 @@ export async function getUserById(req, res) {
     }
 }
 
-export async function createUser(req, res) {
-    try {
-
-        const data = req.body;
-
-        const userFound = await UserModel.findOne({email : data.email});
-        
-        if(userFound){
-            return res.status(400).json({ok: false, msg: "Correo ya registrado"})
-        }
-
-        const user = await UserModel.create(data)
-        return res.status(201).json({ok: true, user})
-
-    } catch (error) {
-        console.log(error)
-        return res.status(500).json({ok: false, msg: "Error interno"})
-    }
-}
-
 export async function updateUser(req, res) {
     try {
         const id = req.params.id;
@@ -64,6 +44,9 @@ export async function updateUser(req, res) {
 
         const userUpdate = await UserModel.findByIdAndUpdate(id, data, {new: true});
 
+        if(!userUpdate){
+            return res.status(404).json({ok: false, msg: "Usuario no encontrado"})
+        }
         return res.status(200).json({ok: true, userUpdate});
 
     } catch (error) {
@@ -75,7 +58,16 @@ export async function updateUser(req, res) {
 
 export async function deleteUser(req,res) {
     try {
-        res.send('USUARIO ELIMINADO');
+        const id = req.params.id;
+
+        const deletedUser = await UserModel.findByIdAndDelete(id);
+
+        if(!deletedUser){
+            return res.status(404).json({ok: false, msg: "Usuario no encontrado"})
+        }
+
+        return res.status(200).json({ok: true, msg: "Usuario Eliminado"})
+
     } catch (error) {
         return res.status(500).json({ok: false, msg: "Error interno"});
         
