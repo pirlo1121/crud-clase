@@ -28,6 +28,8 @@ const productSchema = new mongoose.Schema(
             type: String,
             required: [true, "El nombre del restaurante es obligatorio"],
         },
+        votos: { type: Number, default: 0 }
+
 
     });
 

@@ -61,3 +61,4 @@ export async function deleteProduct(req, res){
         return res.status(500).json({ok: false, msg: "Error interno"})
     }
 }
+

@@ -2,9 +2,10 @@ import express from 'express'; // module = javascript
 import { connectDB } from './src/config/db.config.js';
 // const express = require('express');  commonJs = nodeJs
 import { configDotenv } from 'dotenv';
-import router from './src/routes/users.routes.js'
-import routerProducts from './src/routes/products.routes.js';
+import userRoutes from './src/routes/users.routes.js'
+import productsRoutes from './src/routes/products.routes.js';
 import cors from 'cors' 
+import voteRoutes from './src/routes/votes.routes.js';
 
 configDotenv()
 const app = express();
@@ -15,8 +16,10 @@ app.use( express.json() ); // parsear JSON
 connectDB();
 
 
-app.use( router )
-app.use( routerProducts )
+app.use( userRoutes )
+app.use( productsRoutes )
+app.use( voteRoutes )
+
 // http://localhost:3000/
 // http://168.192.1.10:3000/
 

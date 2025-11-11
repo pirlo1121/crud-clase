@@ -11,7 +11,7 @@ routerProducts.post("/createProduct",verifyToken, isAdmin, createProduct)
 // routerProducts.post("/createProduct",createProduct)
 
 
-routerProducts.get("/products/:category", getProducts)
+
 
 
 export default routerProducts
