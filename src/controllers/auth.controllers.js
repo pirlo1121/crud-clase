@@ -60,7 +60,7 @@ export async function  login(req, res) {
 
         // eliminar la contraseña de userFound
         const token = createToken({userFound});
-        res.status(200).json({ok: true, token: token});
+        res.status(200).json({ok: true, token: token, role: userFound.role});
 
 
     } catch (error) {

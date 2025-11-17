@@ -1,3 +1,4 @@
+import e from 'express';
 import jwt from'jsonwebtoken'
 
 export function createToken(payload) {
@@ -19,6 +20,7 @@ export function decodeToken(token) {
         return { ok: true, payload: decoded }; 
     } catch (error) {
         console.error('Error al decodificar el token:', error.message);
+        console.log(error)
         return { ok: false, error: error.message }; 
     }
 }

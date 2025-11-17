@@ -43,3 +43,20 @@ export function isAdmin(req, res, next) {
   }
 }
 
+export function isOwner(req, res, next) {
+  try {
+    if (!req.user) {
+      return res.status(401).json({ error: 'No autenticado.' });
+    }
+
+    if (req.user.userFound.role !== 'owner') {
+      return res.status(403).json({ error: 'Acceso denegado. Solo propietarios de restaurantes.' });
+    }
+
+    next(); 
+  } catch (err) {
+    console.error('Error en isowner middleware:', err);
+    console.log(err)
+    res.status(500).json({ error: 'Error interno.' });
+  }
+}
