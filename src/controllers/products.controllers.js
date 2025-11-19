@@ -4,10 +4,11 @@ import { productModel } from "../models/prodcuts.models.js"
 export async function getProducts(req, res) {
     try {
 
-        const products = await productModel.find();
+        const products = await productModel.find().populate('userId', 'name');
         return res.status(200).json({ ok: true, products })
 
     } catch (error) {
+        console.log(error)
         return res.status(500).json({ ok: false, msg: "Error interno" })
     }
 }

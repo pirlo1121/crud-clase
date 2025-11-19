@@ -23,6 +23,7 @@ export async function createUser(req, res) {
             name: data.name,
             age: data.age,
             email: data.email,
+            lastName: data.lastName,
             password: hashPassword
         })
 

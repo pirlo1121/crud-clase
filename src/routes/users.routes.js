@@ -12,6 +12,7 @@ router.get("/users/:id", getUserById )
 router.put("/updateUser/:id", updateUser);
 router.delete("/deleteUser/:id", deleteUser);
 
+
 // auth
 router.post("/createUser", createUser);
 router.post("/login", login);

@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import { UserModel } from "../models/users.models.js";
-import bcrypt from 'bcrypt';
 
 export async function getUsers(req, res) {
     try {

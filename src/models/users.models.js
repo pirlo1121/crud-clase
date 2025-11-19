@@ -11,6 +11,9 @@ const userSchema = new mongoose.Schema(
         age: {
             type: Number
         },
+        lastName: {
+            type: String
+        },
         email: {
             type: String,
             required: [true, "El correo es obligatorio"],
@@ -33,7 +36,7 @@ const userSchema = new mongoose.Schema(
             type: Boolean,
             default: false
         },
-        
+
     });
 
 
